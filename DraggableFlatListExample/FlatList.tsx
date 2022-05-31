@@ -1,5 +1,11 @@
 import React, {useCallback, useState} from 'react';
-import {ListRenderItem, View, Text, RefreshControl} from 'react-native';
+import {
+  ListRenderItem,
+  View,
+  Text,
+  RefreshControl,
+  FlatList as RNFlatList,
+} from 'react-native';
 import {FlatList as RNGHFlatList} from 'react-native-gesture-handler';
 import {
   flatListOptions,
@@ -10,6 +16,7 @@ import {
 
 export const FlatList = () => {
   const [refreshing, setRefreshing] = useState(false);
+  const [scrollEnabled, setScrollEnabled] = useState(true);
 
   const renderItem: ListRenderItem<FlatListTestData> = useCallback(
     ({item}) => <Text style={flatListStyles.item}>{item.label}</Text>,
@@ -22,11 +29,16 @@ export const FlatList = () => {
   };
 
   return (
-    <View style={flatListStyles.root}>
-      <RNGHFlatList
+    <View style={[flatListStyles.container, flatListStyles.flex]}>
+      <RNFlatList
         data={flatListTestData}
         keyExtractor={item => item.label}
         onRefresh={onRefresh}
+        scrollEnabled={scrollEnabled}
+        onScrollBeginDrag={() => {
+          setTimeout(() => setScrollEnabled(false), 1000);
+          // setTimeout(() => setScrollEnabled(true), 3000);
+        }}
         refreshControl={
           <RefreshControl
             refreshing={refreshing}

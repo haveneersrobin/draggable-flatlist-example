@@ -37,7 +37,7 @@ export const DraggableFlatList = () => {
   };
 
   return (
-    <View style={flatListStyles.root}>
+    <View style={flatListStyles.flex}>
       <RNDraggableFlatList
         data={flatListTestData}
         keyExtractor={item => item.label}

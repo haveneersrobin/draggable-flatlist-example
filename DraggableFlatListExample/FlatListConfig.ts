@@ -8,12 +8,26 @@ export const flatListTestData: FlatListTestData[] = [
   {label: 'World'},
   {label: 'Test'},
   {label: '123'},
+  {label: '4'},
+  {label: '5'},
+  {label: '6'},
+  {label: '7'},
+  {label: '8'},
+  {label: '9'},
+  {label: '10'},
+  {label: '11'},
+  {label: '12'},
+  {label: '13'},
+  {label: '14'},
+  {label: '15'},
 ];
 
 export const flatListStyles = StyleSheet.create({
-  root: {
-    flex: 1,
+  container: {
     backgroundColor: 'whitesmoke',
+  },
+  flex: {
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
